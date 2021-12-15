@@ -20,12 +20,12 @@ namespace CSharp.V1
 
         public string AutoPropertyInitialized { get; set; } = string.Empty;
 
-        public string ReadOnlyProperty { get; private set; } // Can be set only from the code of this class
+        public string ClassOnlyProperty { get; private set; } = string.Empty; // Can be set only from the code of this class
 
-        public string OnlyConstructorProperty { get; } // Can be set only from constructor or property initializer.
+        public string ConstructorOnlyProperty { get; } = string.Empty; // Can be set only from constructor
 
-        public IEnumerable<string> InitializerProperty { get; } = new List<string>();
+        public static string ReadOnlyProperty => string.Empty; // Same as: { get => string.Empty; }
 
-        public string ComputedProperty => InitializerProperty.Last();
+        public string ReadOnlyComputedProperty => AutoProperty + AutoPropertyInitialized;
     }
 }
